@@ -20,19 +20,23 @@ java -version
 ```
 
 If Java is missing, install one of the packages (choose ONE):
-
+you can also change the default to a specific version like 
+```bash
+sudo apt install openjdk-21-jdk
+```
+or you can use the default openjdk:
 ```bash
 # Headless JRE
-sudo apt install openjdk-21-jre-headless
+sudo apt install default-jre-headless
 
 # Full JRE
-sudo apt install openjdk-21-jre
+sudo apt install default-jre
 
 # Headless JDK
-sudo apt install openjdk-21-jdk-headless
+sudo apt install default-jdk-headless
 
 # Full JDK
-sudo apt install openjdk-21-jdk
+sudo apt install default-jdk
 ```
 
 
