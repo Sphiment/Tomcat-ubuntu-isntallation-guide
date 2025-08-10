@@ -61,7 +61,7 @@ sudo tar xf /tmp/tomcat/apache-tomcat-${tomcatMinor}.tar.gz -C /opt/tomcat
 
 
 ```bash
-sudo ln -s /opt/tomcat/apache-tomcat-9.0.27 /opt/tomcat/latest
+sudo ln -s /opt/tomcat/apache-tomcat-${tomcatMinor} /opt/tomcat/latest
 ```
 
 
