@@ -23,16 +23,16 @@ If Java is missing, install one of the packages (choose ONE):
 
 ```bash
 # Headless JRE
-sudo apt install default-jre-headless
+sudo apt install openjdk-21-jre-headless
 
 # Full JRE
-sudo apt install default-jre
+sudo apt install openjdk-21-jre
 
 # Headless JDK
-sudo apt install default-jdk-headless
+sudo apt install openjdk-21-jdk-headless
 
 # Full JDK
-sudo apt install default-jdk
+sudo apt install openjdk-21-jdk
 ```
 
 
