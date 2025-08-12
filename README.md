@@ -84,7 +84,6 @@ then open this file
 sudo nano /etc/systemd/system/tomcat.service
 ```
 and paste this
-
 ```/etc/systemd/system/tomcat.service
 [Unit]
 Description=Tomcat 9 servlet container
@@ -96,7 +95,7 @@ Type=forking
 User=tomcat
 Group=tomcat
 
-Environment="JAVA_HOME=/usr/lib/jvm/default-java"
+Environment="JAVA_HOME=CHANGE ME"
 Environment="JAVA_OPTS=-Djava.security.egd=file:///dev/urandom -Djava.awt.headless=true"
 
 Environment="CATALINA_BASE=/opt/tomcat/latest"
@@ -109,4 +108,25 @@ ExecStop=/opt/tomcat/latest/bin/shutdown.sh
 
 [Install]
 WantedBy=multi-user.target
+```
+and you have to change the ```JAVA_HOME``` environment variable to the JAVA_HOME you got from the above command
+
+
+then reload system daemon
+```
+sudo systemctl daemon-reload
+```
+start tomcat
+```
+sudo systemctl start tomcat
+```
+check if is it actually active
+```
+sudo systemctl status tomcat
+```
+the output should look something like this 
+```
+● tomcat.service - Tomcat 9 servlet container
+     Loaded: loaded (/etc/systemd/system/tomcat.service; enabled; preset: enabled)
+     Active: active (running) since Mon 2025-08-11 12:38:35 UTC; 20h ago
 ```
