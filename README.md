@@ -66,8 +66,8 @@ sudo ln -s /opt/tomcat/apache-tomcat-${tomcatMinor} /opt/tomcat/latest
 
 
 ```bash
-sudo chown -R -H tomcat: /opt/tomcat/latest
-sudo sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh'
+sudo chown -R -H tomcat:tomcat /opt/tomcat/latest
+sudo chmod -R u+x /opt/tomcat/latest/bin
 ```
 
 Step 4: Create tomcat service
@@ -129,4 +129,15 @@ the output should look something like this
 ● tomcat.service - Tomcat 9 servlet container
      Loaded: loaded (/etc/systemd/system/tomcat.service; enabled; preset: enabled)
      Active: active (running) 
+```
+Congrats you installed tomcat and created a systemd service for it, now here are some extra configs you will probely need:
+
+making a tomcat user:
+manager account (has access to Server Status and Manager App):
+```
+<user username="tomcat_manager" password="s3cret" roles="manager-gui" />
+```
+admin account (has access to Server Status, Manager App and Host Manager):
+```
+<user username="tomcat_admin" password="s3cret" roles="admin-gui,manager-gui"/>
 ```
