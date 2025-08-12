@@ -86,7 +86,7 @@ sudo nano /etc/systemd/system/tomcat.service
 and paste this
 ```/etc/systemd/system/tomcat.service
 [Unit]
-Description=Tomcat 9 servlet container
+Description=Tomcat servlet container
 After=network.target
 
 [Service]
@@ -128,5 +128,5 @@ the output should look something like this
 ```
 ● tomcat.service - Tomcat 9 servlet container
      Loaded: loaded (/etc/systemd/system/tomcat.service; enabled; preset: enabled)
-     Active: active (running) since Mon 2025-08-11 12:38:35 UTC; 20h ago
+     Active: active (running) 
 ```
