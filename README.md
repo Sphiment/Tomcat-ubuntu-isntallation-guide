@@ -133,6 +133,9 @@ the output should look something like this
 Congrats you installed tomcat and created a systemd service for it, now here are some extra configs you will probely need:
 
 making a tomcat user:
+
+in this file  ```/opt/tomcat/latest/conf/tomcat-users.xml```  add these lines:
+
 manager account (has access to Server Status and Manager App):
 ```
 <user username="tomcat_manager" password="s3cret" roles="manager-gui" />
@@ -140,4 +143,28 @@ manager account (has access to Server Status and Manager App):
 admin account (has access to Server Status, Manager App and Host Manager):
 ```
 <user username="tomcat_admin" password="s3cret" roles="admin-gui,manager-gui"/>
+```
+
+enable remote access:
+in this file ```/opt/tomcat/latest/webapps/manager/META-INF/context.xml``` configure the ```valve``` definition
+and add your ip address (```YOUR_IP_ADDRESS```is where your machine's ip address should be)
+you can add multiple ip addresses by separting them with a pipe "|" (don't add any spaces)
+```
+<Context antiResourceLocking="false" privileged="true" >
+  <CookieProcessor className="org.apache.tomcat.util.http.Rfc6265CookieProcessor"
+                   sameSiteCookies="strict" />
+  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1|YOUR_IP_ADDRESS" />
+  <Manager sessionAttributeValueClassNameFilter="java\.lang\.(?:Boolean|Integer|Long|Number|String)|org\.apache\.catali></Context>
+```
+or you can allow unrestricted access from any ip address (less secure) by commenting the ```valve``` definition
+```
+<Context antiResourceLocking="false" privileged="true" >
+  <CookieProcessor className="org.apache.tomcat.util.http.Rfc6265CookieProcessor"
+                   sameSiteCookies="strict" />
+<!--
+  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
+-->
+  <Manager sessionAttributeValueClassNameFilter="java\.lang\.(?:Boolean|Integer|Long|Number|String)|org\.apache\.catali></Context>
 ```
