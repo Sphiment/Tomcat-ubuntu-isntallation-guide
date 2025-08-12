@@ -145,6 +145,11 @@ admin account (has access to Server Status, Manager App and Host Manager):
 <user username="tomcat_admin" password="s3cret" roles="admin-gui,manager-gui"/>
 ```
 
+restart tomcat:
+```bash
+sudo systemctl restart tomcat
+```
+
 enable remote access:
 in this file ```/opt/tomcat/latest/webapps/manager/META-INF/context.xml``` configure the ```valve``` definition
 and add your ip address (```YOUR_IP_ADDRESS```is where your machine's ip address should be)
@@ -159,4 +164,10 @@ or you can allow unrestricted access from any ip address (less secure) by commen
   <Valve className="org.apache.catalina.valves.RemoteAddrValve"
          allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
 -->
+```
+
+
+restart tomcat:
+```bash
+sudo systemctl restart tomcat
 ```
