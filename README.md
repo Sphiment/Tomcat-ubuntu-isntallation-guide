@@ -70,14 +70,22 @@ sudo chown -R -H tomcat: /opt/tomcat/latest
 sudo sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh'
 ```
 
-
 Step 4: Create tomcat service
+find your java home directory and choose the one you want tomcat to be installed on:
+```bash
+sudo update-java-alternatives -l
+```
+or you can print the latest version of java you have only:
+```bash
+sudo update-java-alternatives -l | awk '{print $NF}' | tail -n 1
+```
+then open this file 
 ```bash
 sudo nano /etc/systemd/system/tomcat.service
 ```
 and paste this
 
-```
+```/etc/systemd/system/tomcat.service
 [Unit]
 Description=Tomcat 9 servlet container
 After=network.target
