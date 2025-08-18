@@ -175,3 +175,17 @@ restart tomcat:
 ```bash
 sudo systemctl restart tomcat
 ```
+
+
+disabling 50mb limit for war uplaods:
+edit this file ```/opt/tomcat/latest/webapps/manager/WEB-INF/web.xml```
+
+```
+    <multipart-config>
+      <!-- 50 MiB max -->
+      <max-file-size>252428800</max-file-size>
+      <max-request-size>252428800</max-request-size>
+      <file-size-threshold>0</file-size-threshold>
+    </multipart-config>
+```
+change to a specific size you want 
