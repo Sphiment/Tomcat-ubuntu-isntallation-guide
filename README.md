@@ -120,6 +120,10 @@ start tomcat
 ```
 sudo systemctl start tomcat
 ```
+enable tomcat (start automatically with the system)
+```
+sudo systemctl enable tomcat
+```
 check if is it actually active
 ```
 sudo systemctl status tomcat
